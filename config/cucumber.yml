@@ -1,0 +1,7 @@
+<%
+def_r = " -r features/support/ -r features/step_definitions"
+std_opts = "#{def_r} --format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} --strict --tags ~@wip"
+%>
+default: <%= std_opts %> features
+all: <%= std_opts %>
+wip: --tags @wip:3 --wip features
