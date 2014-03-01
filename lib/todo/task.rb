@@ -1,6 +1,5 @@
 module Todo
   class Task
-    FILENAME='~/.todo.txt'
 
     def self.new_tasks(filename, tasks)
       File.open(filename, 'a+') do |f|

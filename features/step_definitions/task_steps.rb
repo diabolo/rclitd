@@ -8,7 +8,7 @@ module TaskSH
   end
 
   def default_location
-    "#{Todo::DEFAULT_LOCATION}/#{Todo::DEFAULT_FILENAME}"
+    Todo.location
   end
 end
 World TaskSH
@@ -32,6 +32,6 @@ end
 Then "my task should be stored in the default location" do
   File.exist?(default_location).should be_true
   File.open(default_location) do |f|
-    f.lines.count.should == 1
+    f.each_line.count.should == 1
   end
 end

@@ -21,8 +21,9 @@ switch [:s,:switch]
 
 desc "Path to the todo file"
 arg_name "todo_file"
-default_value File.join(Todo::DEFAULT_LOCATION,Todo::DEFAULT_FILENAME)
+default_value Todo.location
 flag [:f,:filename]
+
 
 desc 'Create a new task in the task list'
 arg_name '[task_name]'
