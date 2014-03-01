@@ -4,3 +4,4 @@ require 'todo/version.rb'
 # you just need to require this one file in your bin file
 
 require 'todo/task.rb'
+require 'todo/location.rb'

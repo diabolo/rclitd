@@ -6,6 +6,10 @@ module TaskSH
   def task_count
     `todo list | wc -l`.chomp.to_i
   end
+
+  def default_location
+    "#{Todo::DEFAULT_LOCATION}/#{Todo::DEFAULT_FILENAME}"
+  end
 end
 World TaskSH
 
@@ -25,3 +29,9 @@ Then /^there should be a task$/ do
   task_count.should > 0
 end
 
+Then "my task should be stored in the default location" do
+  File.exist?(default_location).should be_true
+  File.open(default_location) do |f|
+    f.lines.count.should == 1
+  end
+end
