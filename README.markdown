@@ -29,7 +29,7 @@ So if we were writing a feature for `rm` we might end up with
     Then I should see that `ls /tmp/dir` is ``
 
 You can look at Cucumbers features for itself on Relish to see what this ends
-up like, [this one](1) is a dozy :)
+up like, [this one][1] is a dozy :)
 
 Instead can we write scenarios that
 
