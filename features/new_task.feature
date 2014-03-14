@@ -7,7 +7,6 @@ Feature: New task
     When I add a task
     Then there should be a task
 
-    @wip
   Scenario: Store a number of tasks
     When I add 5 tasks
     Then there should be 5 tasks

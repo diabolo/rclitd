@@ -14,7 +14,6 @@ Feature: Task list location
   setting
 
 
-  @wip
   Scenario: Add a task
     When I add a task
     Then my task should be stored in the default location
