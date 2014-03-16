@@ -1,7 +1,12 @@
 module TaskSH
   def add_task(attrs={})
     command = "#{xec(attrs)} new 'New todo item'"
-    system command
+    runc command
+  end
+
+  def list_tasks(attrs={})
+    command = "#{xec(attrs)} list"
+    runc command
   end
 
   def task_count
@@ -14,16 +19,27 @@ module TaskSH
 
   def task_present(attrs={})
     loc = attrs[:location] || default_location
+    count = attrs[:count] || 1
 
     File.exist?(loc).should be_true
     File.open(loc) do |f|
-      f.each_line.count.should == 1
+      f.each_line.count.should == count
     end
+  end
+
+  def some; 3; end
+
+  def should_see_some_tasks
+    @output.each_line.count.should == some
   end
 end
 World TaskSH
 
 module CommandSH
+  def runc(command)
+    @output = `#{command}`
+  end
+
   def xec(attrs)
     "#{executable}#{global_options(attrs)}"
   end
@@ -59,3 +75,16 @@ end
 Then "my task should be stored in the default location" do
   task_present
 end
+
+Given /^I have added some tasks$/ do
+  some.times { add_task }
+end
+
+When /^I list the tasks$/ do
+  list_tasks
+end
+
+Then /^I should see some tasks$/ do
+  should_see_some_tasks
+end
+

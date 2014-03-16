@@ -14,11 +14,11 @@ Feature: Task list location
   setting
 
 
-  Scenario: Add a task
+  Scenario: New task stored in default location
     When I add a task
     Then my task should be stored in the default location
 
-  Scenario: Add a task specifying a custom location
+  Scenario: New task stored in custom location
     Given I have a custom location
     When I add a task with a custom location
     Then my task should be stored in the custom location
